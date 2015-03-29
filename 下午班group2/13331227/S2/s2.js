@@ -2,13 +2,12 @@
 
 //window onload
 window.onload = function() {
-    var info_bar = document.getElementById('info-bar');
-    var buttons = document.getElementsByClassName('button');
+    var info_bar = document.getElementById("info-bar");
+    var buttons = document.getElementsByClassName("button");
     document.getElementById("apb").onclick = order;
     xmlhttp = new XMLHttpRequest();
     getRandomNumbers(buttons, info_bar);
 }
-
 
 //get random number one by one when click at_plus icon
 function order() {
@@ -28,7 +27,7 @@ function order() {
     });
 }
 
-//get random number for a button
+//get random number for a certain button
 function getRandomNumber(buttons, button, func) {
     button.childNodes[1].classList.add('opacity');
     button.childNodes[1].innerHTML = "...";
@@ -45,7 +44,7 @@ function getRandomNumber(buttons, button, func) {
     })
 }
 
-//get random number for each button
+//get random number for every button
 function getRandomNumbers(buttons, info_bar) {
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function(i) {
