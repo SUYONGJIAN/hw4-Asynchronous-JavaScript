@@ -15,6 +15,7 @@ function getRandomNumbers(buttons, info_bar) {
                 this.childNodes[1].classList.add('opacity');
                 this.childNodes[1].innerHTML = '...';
                 disableOtherButtons(buttons, buttons[i]);
+
                 getRNumFromServer(function(rNum) {
                     buttons[i].childNodes[1].innerHTML = rNum;
                     buttons[i].classList.add('grey');
@@ -23,10 +24,9 @@ function getRandomNumbers(buttons, info_bar) {
                     isInfo_barActive(info_bar, buttons);
                 });
             }
-        }(i);
+        }(i)
     }
 }
-
 //get random number from server.js
 function getRNumFromServer(func) {
     var xmlhttp;
@@ -72,7 +72,7 @@ function disableOtherButtons(buttons, able_button) {
 function isInfo_barActive(info_bar, buttons) {
     var flag = true;
     for (var i = 0; i < buttons.length; i++) {
-        if (buttons[i].childNodes[1].innerHTML == '' || buttons[i].childNodes[1].innerHTML == '...') {
+        if (!buttons[i].childNodes[1].classList.contains('opacity')) {
             flag = false;
         }
     }
@@ -90,10 +90,9 @@ function Sum() {
     for (var i = 0; i < buttons.length; i++) {
         sum += parseInt(buttons[i].childNodes[1].innerHTML);
     }
-    var info_bar = document.getElementById('info-bar');
-    info_bar.innerHTML = sum;
-    info_bar.disabled = 1;
-    info_bar.classList.add('grey');
+    this.innerHTML = sum;
+    this.disabled = 1;
+    this.classList.add('grey');
     document.getElementById("button").onmouseout = resetCalculator;
 }
 
